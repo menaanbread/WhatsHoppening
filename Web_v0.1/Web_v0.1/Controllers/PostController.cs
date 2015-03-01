@@ -9,7 +9,6 @@ namespace Web_v0._1.Controllers
 {
     public class PostController : Controller
     {
-        [Authorize]
         public ActionResult Index()
         {
             IBreweryRepository brewR = new BreweryRepository();
