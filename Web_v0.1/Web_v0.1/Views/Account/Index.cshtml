@@ -1,0 +1,19 @@
+﻿@model Web_v0._1.Models.AccountModel
+
+@{
+    ViewBag.Title = "Account";
+}
+
+<h2>@Html.DisplayFor(m => m.Username)</h2>
+
+<p class="lblAcc">Name</p>
+@Html.DisplayFor(m => m.Name)
+
+<p class="lblAcc">Email Address</p>
+@Html.DisplayFor(m => m.Email)
+
+<p class="lblAcc">Date of Birth</p>
+@Html.DisplayFor(m => m.DOB)
+
+<p class="lblAcc">Location</p>
+@Html.DisplayFor(m => m.Location)

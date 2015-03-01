@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2013 for Web
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web_v0.1", "Web_v0.1\Web_v0.1.csproj", "{A426C7F4-FFF1-4551-84C6-5F8CB27CE184}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure_v0", "..\Infrastructure_v0\Infrastructure_v0\Infrastructure_v0.csproj", "{DAC245AC-55DD-4595-9D2C-4A77E4588F7A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A426C7F4-FFF1-4551-84C6-5F8CB27CE184}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A426C7F4-FFF1-4551-84C6-5F8CB27CE184}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A426C7F4-FFF1-4551-84C6-5F8CB27CE184}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A426C7F4-FFF1-4551-84C6-5F8CB27CE184}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAC245AC-55DD-4595-9D2C-4A77E4588F7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAC245AC-55DD-4595-9D2C-4A77E4588F7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAC245AC-55DD-4595-9D2C-4A77E4588F7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAC245AC-55DD-4595-9D2C-4A77E4588F7A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

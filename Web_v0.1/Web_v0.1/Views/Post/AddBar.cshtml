@@ -1,0 +1,59 @@
+﻿@model Web_v0._1.Models.AddBarViewModel
+
+@{
+    ViewBag.Title = "AddBar";
+}
+
+<div class="page-header">
+    <h2>Add Bar</h2>
+</div>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Bar.Name) 
+    </div>
+    <div class="editor-field">
+        @Html.TextBoxFor(model => model.Bar.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Bar.Name) 
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Bar.Address)
+    </div>
+    <div class="editor-field">
+        @Html.TextBoxFor(model => model.Bar.Address, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Bar.Address)
+    </div>
+
+    <div class="editor-label">
+        <label for="Bar-Type">Bar Type</label>
+    </div>
+    <div class="editor-field">
+        @Html.EnumDropDownListFor(m => m.Type, new { @class = "form-control" })
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Bar.Website)
+    </div>
+    <div class="editor-field">
+        @Html.TextBoxFor(model => model.Bar.Website, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Bar.Website)
+    </div>
+
+    <hr />
+    
+    <button type="submit" class="btn btn-success btn-block">Submit</button>
+
+}
+
+<div>
+    @Html.ActionLink("Back to post", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,32 @@
+﻿@model Web_v0._1.Models.BreweryModel
+
+@{
+    ViewBag.Title = "Add Brewery";
+}
+
+<div class="page-header">
+    <h2>Add Brewery</h2>
+</div>
+
+@using (Html.BeginForm("AddBrewery", "Post"))
+{
+    <label for="Brewery-Name">Name</label>
+    @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+    
+    <label for="Brewery-Year">Year opened</label>
+    @Html.TextBoxFor(m => m.YearOpened, new { @class = "form-control" })
+
+    <label for="Brewery-Location">Location</label>
+    @Html.TextBoxFor(m => m.Location, new { @class = "form-control" })
+
+    <label for="Brewery-Website">Website</label>
+    @Html.TextBoxFor(m => m.Website, new { @class = "form-control" })
+    
+    <hr />
+
+    <button type="submit" class="btn btn-success btn-block">Submit</button>
+}
+
+<div>
+    @Html.ActionLink("Back to post", "Index")
+</div>

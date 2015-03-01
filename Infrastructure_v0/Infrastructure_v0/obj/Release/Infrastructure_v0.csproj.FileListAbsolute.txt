@@ -1,0 +1,5 @@
+C:\dev\BeerWebsite\Infrastructure_v0\Infrastructure_v0\bin\Release\Infrastructure_v0.dll
+C:\dev\BeerWebsite\Infrastructure_v0\Infrastructure_v0\bin\Release\Infrastructure_v0.pdb
+C:\dev\BeerWebsite\Infrastructure_v0\Infrastructure_v0\obj\Release\Infrastructure_v0.dll
+C:\dev\BeerWebsite\Infrastructure_v0\Infrastructure_v0\obj\Release\Infrastructure_v0.pdb
+C:\dev\BeerWebsite\Infrastructure_v0\Infrastructure_v0\obj\Release\Infrastructure_v0.csprojResolveAssemblyReference.cache

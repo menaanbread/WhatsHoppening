@@ -1,0 +1,51 @@
+﻿@model Web_v0._1.Models.PostViewModel
+
+@{
+    ViewBag.Title = "Post";
+}
+
+<div class="page-header">
+    <h2>Post</h2>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <label for="Post-Brewery">What brewery is the beer you're drinking from?</label>
+    @Html.DropDownListFor(m => m.SelectedBrewery, Model.BreweryNames, new { @class = "form-control" })
+
+    <label for="Post-Beer">What beer are you drinking?</label>
+    @Html.DropDownListFor(m => m.SelectedBeer, Model.BeerNames, new { @class = "form-control" })
+
+    <label for="Post-Bar">Where are you drinking it?</label>
+    @Html.DropDownListFor(m => m.SelectedBar, Model.BarNames, new { @class = "form-control" })
+
+    <label for="Post-Decription">Provide a description of the beer?</label>
+    @Html.TextArea("Description", new { @class = "form-control" })
+
+    <label for="Post-Rating">What do you rate this? (/5)</label>
+    <select name="Rating" class="form-control">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+
+    <br/>
+
+    <button type="submit" class="btn btn-success btn-block">Submit</button>
+}
+<br /><hr />
+
+
+<p>Can't find the options you want? Feel free to add a new record!</p>
+
+@Html.ActionLink("Add New Brewery", "AddBrewery", "Post")
+<br />
+@Html.ActionLink("Add New Beer", "AddBeer", "Post")
+
+<br />
+@Html.ActionLink("Add New Bar", "AddBar", "Post")

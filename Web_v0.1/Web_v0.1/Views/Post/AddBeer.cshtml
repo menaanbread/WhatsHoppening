@@ -1,0 +1,68 @@
+﻿@model Web_v0._1.Models.AddBeerViewModel
+
+@{
+    ViewBag.Title = "AddBeer";
+}
+
+<div class="page-header">
+    <h2>Add Beer</h2>
+</div>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Beer.Name)
+    </div>
+    <div class="editor-field">
+        @Html.TextBoxFor(model => model.Beer.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Beer.Name)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Beer.Style)
+    </div>
+    <div class="editor-field">
+        @Html.TextBoxFor(model => model.Beer.Style, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Beer.Style)
+    </div>
+
+    <div class="editor-label">
+        <label for="Beer-Year">From Year</label>
+    </div>
+    <div class="editor-field">
+        @Html.TextBoxFor(model => model.Beer.YearStarted, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Beer.YearStarted)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Beer.ABV)
+    </div>
+    <div class="editor-field">
+        @Html.TextBoxFor(model => model.Beer.ABV, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Beer.ABV)
+    </div>
+
+    <div class="editor-label">
+        <label for="Beer-Brewery">Brewery</label>
+    </div>
+    <div class="editor-field">
+        @Html.DropDownListFor(model => model.SelectedBrewery, Model.BreweryNames, new { @class = "form-control" })
+    </div>
+    @Html.HiddenFor(model => model.Beer.BreweryId)
+
+    <hr />
+
+    <button type="submit" class="btn btn-success btn-block" onclick="SetBreweryId();">Submit</button>
+}
+
+<div>
+    @Html.ActionLink("Back to Post", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Scripts/AddBeer.js")
+}

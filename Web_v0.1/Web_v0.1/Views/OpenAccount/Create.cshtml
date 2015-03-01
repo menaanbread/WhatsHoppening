@@ -1,0 +1,35 @@
+﻿@model Web_v0._1.Models.AccountModel
+
+@{
+    ViewBag.Title = "Open Account";
+}
+
+<h2>Open Account</h2>
+
+@using (Html.BeginForm("Create", "OpenAccount"))
+{
+    <label>Username</label>
+    @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+
+    <label>Password</label>
+    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+
+    <label>Name</label>
+    @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+
+    <label>Email Address</label>
+    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+
+    <label>Date of Birth</label>
+    @Html.TextBoxFor(m => m.DOB, new { @class = "form-control" })
+
+    <label>Location</label>
+    @Html.TextBoxFor(m => m.Location, new { @class = "form-control" })
+
+    <label>Image upload</label>
+    <input type="file" id="inImage" class="form-control"/> //ToDo implement me!
+
+    <hr />
+
+    <button type="submit" class="btn btn-success btn-block">Create</button>
+}

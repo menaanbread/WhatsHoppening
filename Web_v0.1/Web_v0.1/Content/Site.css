@@ -1,0 +1,92 @@
+﻿html {
+    width : 100%;
+}
+
+body {
+    /*font-family : Verdana, Geneva, sans-serif;*/
+    margin-left : 2%;
+    margin-right : 2%;
+    /*font-size : 1em;*/ 
+}
+
+/*input, select, textarea{
+   display : block;
+   height : 2.5em;
+   border-style : solid;
+   border-width : medium;
+   font-size : inherit;
+   width: 90%;
+   margin: 0 5% 0 5%;
+}
+
+input[type="submit"], a.btnsub {
+    height : 2.5em;   
+    background-color : #99a5fc;
+    border-color : #5468ff; 
+    font-weight : bold;
+    text-indent : 0.5em;
+    width: 90%;
+    margin: 0 5% 0 5%;
+}
+
+input[type="file"] {}*/
+
+.pDesc {
+    height : 5em;
+}
+
+.lblAcc {
+    font-weight : bold;
+}
+
+.menuItems {
+    background-color : #111111;
+    height : 2.5em;
+    vertical-align : bottom;
+    text-align : center;
+}
+
+.menuItems a{
+    text-decoration: none;
+    font-weight : bold;
+    color : #FFFFFF;
+    padding : 0.7em;
+    display : block;
+}
+
+.menuItems li {
+    float : left;
+    height : 100%;
+    list-style-type: none;
+}
+
+.menuItems li:hover {
+    background-color : #444444;
+}
+
+.postBx {
+    background : #EFEFEF;
+    border-radius : 8px;
+    height : 5em;
+    vertical-align : middle;
+    margin : 20px 8px 20px 8px;
+}
+
+.pUn {
+    width : 10em;
+    font-weight : bold;
+}
+
+.pBeerN {
+    width : 15em;
+    font-style : italic;
+}
+
+.pBarN {
+    width : 15em;
+}
+
+.pRat {
+    width : 5em;
+    font-weight : bold;
+}

@@ -1,0 +1,45 @@
+﻿@model Web_v0._1.Models.HomeViewModel
+
+@{
+    ViewBag.Title = "What's Hoppening?";
+}
+
+<h1>What's Hoppening?</h1>
+
+<h3>Welcome @Html.DisplayFor(m => m.Account.Username)</h3>
+
+<p>
+    Whats Hopping? is a website dedicated to beer fans everywhere. We love beer, and we want to offer a community for all beer lovers to come together and share what they're drinking, what they like and where's good to drink.
+    Come join us - no matter what your tipple is, we have a place for you here!    
+</p>
+
+<hr/><br />
+
+<h4>Whats drinking? Our members are having:</h4>
+    @foreach (var post in Model.Posts)
+    {
+        <div class="jumbotron">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>@post.Username</td>
+                        <td>@post.BeerName</td>
+                        <td>@post.BarName</td>
+                        <td>@post.Rating</td>
+                    </tr>
+                    <tr>
+                        <td>@post.Description</td>
+                        <td>@post.TimeStamp</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <hr/>
+    }
+
+
+
+<br/>
+
+@Html.ActionLink("New Post", null, "Post")
