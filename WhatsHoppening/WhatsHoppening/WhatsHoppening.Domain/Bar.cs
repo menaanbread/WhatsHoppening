@@ -8,5 +8,9 @@ namespace WhatsHoppening.Domain
 {
     public class Bar
     {
+        public string Name { get; set; }
+        public string Location { get; set; }
+        public BarStyle BarStyle{ get; set; }
+        public string Website { get; set; }
     }
 }

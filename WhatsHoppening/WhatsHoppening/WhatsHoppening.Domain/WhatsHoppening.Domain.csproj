@@ -41,8 +41,10 @@
   <ItemGroup>
     <Compile Include="AuthenticationRequest.cs" />
     <Compile Include="Bar.cs" />
+    <Compile Include="BarStyle.cs" />
     <Compile Include="Beer.cs" />
     <Compile Include="Brewery.cs" />
+    <Compile Include="Interfaces\ILocationManager.cs" />
     <Compile Include="Interfaces\ILogger.cs" />
     <Compile Include="Interfaces\IPermissionsManager.cs" />
     <Compile Include="Interfaces\IPersistenceProvider.cs" />
