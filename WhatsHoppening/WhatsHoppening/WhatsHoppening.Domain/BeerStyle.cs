@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace WhatsHoppening.Domain
 {
-    public class AuthenticationRequest
+    public class BeerStyle
     {
-        public string Username { get; set; }
-        public string Password { get; set; }
+        public string Name { get; set; }
     }
 }

@@ -9,6 +9,9 @@ namespace WhatsHoppening.Domain
     {
         Pub = 0,
         Bar = 1,
-        Restaurant = 2
+        Restaurant = 2,
+        Home = 3, 
+        MatesHouse = 4,
+        Festival = 5
     }
 }
