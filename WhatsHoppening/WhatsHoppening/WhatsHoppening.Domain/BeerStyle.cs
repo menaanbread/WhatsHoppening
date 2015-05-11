@@ -9,5 +9,7 @@ namespace WhatsHoppening.Domain
     public class BeerStyle
     {
         public string Name { get; set; }
+        public string Description { get; set; }
+        public Guid Id { get; set; }
     }
 }

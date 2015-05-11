@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace WhatsHoppening.Domain
 {
-    public class Permission
+    public enum Permission
     {
+        Standard = 0,
+        Admin = 1
     }
 }

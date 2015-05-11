@@ -3,30 +3,47 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WhatsHoppening.Domain;
 using WhatsHoppening.Domain.Interfaces;
 
 namespace WhatsHoppening.Providers.UserManager
 {
     public class MockedUserManager : IUserManager
     {
-        public Domain.User GetUser()
+        private static List<User> allUsers = null;
+
+        public MockedUserManager()
         {
-            throw new NotImplementedException();
+            allUsers = new List<User>();
+
+            allUsers.Add(new User() { AccountType = Permission.Admin, Country = Country.UnitedKingdom, Created = DateTime.Now, Id = 1, Location = "Warrington", UserName = "Tom" });
+            allUsers.Add(new User() { AccountType = Permission.Standard, Country = Country.UnitedKingdom, Created = DateTime.Now, Id = 2, Location = "London", UserName = "Test1" });
+            allUsers.Add(new User() { AccountType = Permission.Standard, Country = Country.France, Created = DateTime.Now, Id = 3, Location = "Paris", UserName = "LeTest" });
+            allUsers.Add(new User() { AccountType = Permission.Standard, Country = Country.Germany, Created = DateTime.Now, Id = 4, Location = "Berlin", UserName = "DerTesdt" });
+            allUsers.Add(new User() { AccountType = Permission.Standard, Country = Country.UnitedStatesOfAmerica, Created = DateTime.Now, Id = 5, Location = "New York", UserName = "Test2" });
+            allUsers.Add(new User() { AccountType = Permission.Standard, Country = Country.Belgium, Created = DateTime.Now, Id = 6, Location = "Gent", UserName = "DieTyst" });
+            allUsers.Add(new User() { AccountType = Permission.Standard, Country = Country.Denmark, Created = DateTime.Now, Id = 7, Location = "Allborg", UserName = "rodegrodmegfloge" });
         }
 
-        public Domain.User GetUser(int id)
+        public User GetUser()
         {
-            throw new NotImplementedException();
+            return allUsers[0];
         }
 
-        public Domain.User GetUser(string username)
+        public User GetUser(int id)
         {
-            throw new NotImplementedException();
+            return allUsers.Find(u => u.Id == id);
         }
 
-        public void SaveUser(Domain.User user)
+        public User GetUser(string username)
         {
-            throw new NotImplementedException();
+            return allUsers.Find(u => u.UserName.Equals(username, StringComparison.InvariantCultureIgnoreCase));
+        }
+
+        public void SaveUser(User user)
+        {
+            allUsers.RemoveAll(u => u.Id == user.Id);
+            allUsers.Add(user);
         }
     }
 }

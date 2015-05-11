@@ -8,7 +8,6 @@ namespace WhatsHoppening.Domain.Interfaces
 {
     public interface IPermissionsManager
     {
-        List<Permission> ListPermissions();
-        bool UserHasPermission(User user);
+        bool UserHasPermission(User user, Permission permission);
     }
 }
