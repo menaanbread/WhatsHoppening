@@ -20,18 +20,20 @@ namespace WhatsHoppening.Domain
             this.barStyle = barStyle;
         }
 
-        public Bar(string website, string name, string location, BarStyle barStyle)
+        public Bar(string website, string name, string location, BarStyle barStyle, Country country)
         {
             Website = website;
             Name = name;
             Location = location;
             this.barStyle = barStyle;
+            Country = country;
         }
 
         public string Website { get; set; }
         public string Name { get; set; }
         public string Location { get; set; }
         public BarStyle BarStyle { get { return barStyle; } }
+        public Country Country { get; set; }
         public int Id { get; set; }
     }
 }
