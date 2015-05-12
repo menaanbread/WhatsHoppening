@@ -7,19 +7,13 @@ using WhatsHoppening.Infrastructure;
 
 namespace WhatsHoppening.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : AuthenticationController
     {
-        private HopCore core = null;
+        public HomeController(HopCore core) : base(core) { }
 
-        public HomeController(HopCore core)
-        {
-            this.core = core;
-        }
-
-        // GET: Home
         public ActionResult Index()
         {
-            return View(core.ListAllPosts());
+            return View(Core.ListAllPosts());
         }
     }
 }

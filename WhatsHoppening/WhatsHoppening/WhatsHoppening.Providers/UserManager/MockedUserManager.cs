@@ -11,7 +11,7 @@ namespace WhatsHoppening.Providers.UserManager
     public class MockedUserManager : IUserManager
     {
         private static List<User> allUsers = null;
-
+                
         public MockedUserManager()
         {
             allUsers = new List<User>();

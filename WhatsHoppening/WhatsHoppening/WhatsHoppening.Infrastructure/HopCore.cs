@@ -38,9 +38,57 @@ namespace WhatsHoppening.Infrastructure
             catch (Exception e)
             {
                 logger.Log(LogSeverity.Error, "Error trying to perform ListAllPosts operation", e);
+                throw e;
             }
 
             return posts;
+        }
+
+        public User GetCurrentUser()
+        {
+            User user = null;
+
+            try
+            {
+                user = userManager.GetUser();
+            }
+            catch (Exception e)
+            {
+                logger.Log(LogSeverity.Error, "Error trying to perform GetCurrentUser operation", e);
+                throw e;
+            }
+
+            return user;
+        }
+
+        public bool IsUserAuthenticated(User user)
+        {
+            bool authenticated = false;
+
+            try
+            {
+                authenticated = sessionManager.HasAuthentication(user);
+            }
+            catch (Exception e)
+            {
+                logger.Log(LogSeverity.Error, "Error trying to perform IsUserAuthenticated operation", e);
+                throw e;
+            }
+
+            return authenticated;
+        }
+
+        public void AuthenticateUser(string username, string password)
+        {
+            try
+            {
+                sessionManager.AuthenticateUser(new AuthenticationRequest() { Username = username, Password = password }); 
+            }
+            catch (Exception e)
+            {
+                logger.Log(LogSeverity.Error, "Error trying to perform IsUserAuthenticated operation", e);
+                throw e;
+            }
         }
     }
 }
