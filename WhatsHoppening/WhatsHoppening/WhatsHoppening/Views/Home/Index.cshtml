@@ -1,0 +1,20 @@
+﻿@model List<Post>
+
+@using WhatsHoppening.Domain
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@foreach (var item in Model)
+{
+    <div class="jumbotron">
+        <h1>@item.User.UserName : @item.Beer.Name - @item.Bar.Name</h1>
+        <p>@item.Content</p>
+        <p>@item.Rating</p>
+        <p>@item.TimeStamp.ToShortDateString()</p>
+    </div>
+}
+

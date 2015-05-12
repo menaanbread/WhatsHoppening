@@ -9,10 +9,17 @@ namespace WhatsHoppening.Controllers
 {
     public class HomeController : Controller
     {
+        private HopCore core = null;
+
+        public HomeController(HopCore core)
+        {
+            this.core = core;
+        }
+
         // GET: Home
         public ActionResult Index()
         {
-            return View();
+            return View(core.ListAllPosts());
         }
     }
 }

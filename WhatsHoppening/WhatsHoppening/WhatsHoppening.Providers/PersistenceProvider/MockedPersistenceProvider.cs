@@ -71,20 +71,20 @@ namespace WhatsHoppening.Providers.PersistenceProvider
             breweries.Add(new Brewery() { Id = 12, Name = "J.W. Lees", Country = Country.UnitedKingdom, Description = string.Empty, Location = "Middleton", BeersBrewed = new List<Beer>() { beers[11] } });
 
             // --------- Posts ---------
-            posts.Add(new Post() { Id = 1, Beer = beers[0], Bar = bars[0], TimeStamp = DateTime.Now, User =  userManager.GetUser(), Rating = 5.0, Content = "THE BEST EVER."});
-            posts.Add(new Post() { Id = 2, Beer = beers[2], Bar = bars[1], TimeStamp = DateTime.Now, User = userManager.GetUser(), Rating = 2.3, Content = "Bat naff really." });
-            posts.Add(new Post() { Id = 3, Beer = beers[3], Bar = bars[2], TimeStamp = DateTime.Now, User = userManager.GetUser(), Rating = 4.2, Content = "Mmm this was good." });
-            posts.Add(new Post() { Id = 4, Beer = beers[4], Bar = bars[3], TimeStamp = DateTime.Now, User = userManager.GetUser(), Rating = 1.0, Content = "Awful, yuck." });
-            posts.Add(new Post() { Id = 5, Beer = beers[5], Bar = bars[4], TimeStamp = DateTime.Now, User = userManager.GetUser(), Rating = 0.0, Content = "I'd rather die." });
-            posts.Add(new Post() { Id = 6, Beer = beers[6], Bar = bars[0], TimeStamp = DateTime.Now, User = userManager.GetUser(), Rating = 4.8, Content = "So close to BB it's untrue." });
-            posts.Add(new Post() { Id = 7, Beer = beers[7], Bar = bars[1], TimeStamp = DateTime.Now, User = userManager.GetUser(), Rating = 4.9, Content = "Me tastebuds are alight." });
-            posts.Add(new Post() { Id = 8, Beer = beers[8], Bar = bars[2], TimeStamp = DateTime.Now, User = userManager.GetUser(), Rating = 3.1, Content = "Pretty decent yo." });
-            posts.Add(new Post() { Id = 9, Beer = beers[9], Bar = bars[3], TimeStamp = DateTime.Now, User = userManager.GetUser(), Rating = 4.0, Content = "Really solidly good beer." });
-            posts.Add(new Post() { Id = 10, Beer = beers[1], Bar = bars[4], TimeStamp = DateTime.Now, User = userManager.GetUser(), Rating = 2.5, Content = "Definition of average." });
-            posts.Add(new Post() { Id = 11, Beer = beers[1], Bar = bars[0], TimeStamp = DateTime.Now, User = userManager.GetUser(), Rating = 1.6, Content = "POOR." });
-            posts.Add(new Post() { Id = 12, Beer = beers[0], Bar = bars[1], TimeStamp = DateTime.Now, User = userManager.GetUser(), Rating = 5.0, Content = "THE BEST EVER." });
-            posts.Add(new Post() { Id = 13, Beer = beers[10], Bar = bars[2], TimeStamp = DateTime.Now, User = userManager.GetUser(), Rating = 3.8, Content = "Could be better, but not bad." });
-            posts.Add(new Post() { Id = 14, Beer = beers[11], Bar = bars[3], TimeStamp = DateTime.Now, User = userManager.GetUser(), Rating = 2.2, Content = "Just a bad beer." });
+            posts.Add(new Post() { Id = 1, Beer = beers[0], Bar = bars[0], TimeStamp = DateTime.Now, User =  userManager.GetUser(1), Rating = 5.0, Content = "THE BEST EVER."});
+            posts.Add(new Post() { Id = 2, Beer = beers[2], Bar = bars[1], TimeStamp = DateTime.Now, User = userManager.GetUser(2), Rating = 2.3, Content = "Bat naff really." });
+            posts.Add(new Post() { Id = 3, Beer = beers[3], Bar = bars[2], TimeStamp = DateTime.Now, User = userManager.GetUser(3), Rating = 4.2, Content = "Mmm this was good." });
+            posts.Add(new Post() { Id = 4, Beer = beers[4], Bar = bars[3], TimeStamp = DateTime.Now, User = userManager.GetUser(4), Rating = 1.0, Content = "Awful, yuck." });
+            posts.Add(new Post() { Id = 5, Beer = beers[5], Bar = bars[4], TimeStamp = DateTime.Now, User = userManager.GetUser(5), Rating = 0.0, Content = "I'd rather die." });
+            posts.Add(new Post() { Id = 6, Beer = beers[6], Bar = bars[0], TimeStamp = DateTime.Now, User = userManager.GetUser(6), Rating = 4.8, Content = "So close to BB it's untrue." });
+            posts.Add(new Post() { Id = 7, Beer = beers[7], Bar = bars[1], TimeStamp = DateTime.Now, User = userManager.GetUser(7), Rating = 4.9, Content = "Me tastebuds are alight." });
+            posts.Add(new Post() { Id = 8, Beer = beers[8], Bar = bars[2], TimeStamp = DateTime.Now, User = userManager.GetUser(1), Rating = 3.1, Content = "Pretty decent yo." });
+            posts.Add(new Post() { Id = 9, Beer = beers[9], Bar = bars[3], TimeStamp = DateTime.Now, User = userManager.GetUser(2), Rating = 4.0, Content = "Really solidly good beer." });
+            posts.Add(new Post() { Id = 10, Beer = beers[1], Bar = bars[4], TimeStamp = DateTime.Now, User = userManager.GetUser(3), Rating = 2.5, Content = "Definition of average." });
+            posts.Add(new Post() { Id = 11, Beer = beers[1], Bar = bars[0], TimeStamp = DateTime.Now, User = userManager.GetUser(4), Rating = 1.6, Content = "POOR." });
+            posts.Add(new Post() { Id = 12, Beer = beers[0], Bar = bars[1], TimeStamp = DateTime.Now, User = userManager.GetUser(5), Rating = 5.0, Content = "THE BEST EVER." });
+            posts.Add(new Post() { Id = 13, Beer = beers[10], Bar = bars[2], TimeStamp = DateTime.Now, User = userManager.GetUser(6), Rating = 3.8, Content = "Could be better, but not bad." });
+            posts.Add(new Post() { Id = 14, Beer = beers[11], Bar = bars[3], TimeStamp = DateTime.Now, User = userManager.GetUser(7), Rating = 2.2, Content = "Just a bad beer." });
 
         }
 
