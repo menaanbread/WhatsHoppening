@@ -13,17 +13,16 @@ namespace WhatsHoppening.Providers.SessionManager
     public class MockedSessionManager : ISessionManager
     {
         private static Dictionary<string, string> users = null;
-        private static List<User> authorisedUsers = null;
+        private static List<User> authorisedUsers = new List<User>();
         private static IUserManager userManager;
 
-        public MockedSessionManager()
+        static MockedSessionManager()
         {
-            authorisedUsers = new List<User>();
             users = new Dictionary<string, string>();
             
             userManager = new MockedUserManager();
             
-            users.Add("Tom", "memtest");
+            users.Add("tom", "memtest");
             users.Add("t", "");
         }
 
@@ -46,7 +45,7 @@ namespace WhatsHoppening.Providers.SessionManager
 
         public bool HasAuthentication(User user)
         {
-            return authorisedUsers.Exists(u => u == user);
+            return authorisedUsers.Exists(u => u.Id == user.Id);
         }
     }
 }

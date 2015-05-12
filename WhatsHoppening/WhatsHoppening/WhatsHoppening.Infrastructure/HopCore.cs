@@ -27,6 +27,11 @@ namespace WhatsHoppening.Infrastructure
             this.userManager = userManager;
         }
 
+        public ILogger Logger 
+        {
+            get { return logger; } 
+        }
+
         public List<Post> ListAllPosts()
         {
             var posts = new List<Post>();
@@ -87,6 +92,19 @@ namespace WhatsHoppening.Infrastructure
             catch (Exception e)
             {
                 logger.Log(LogSeverity.Error, "Error trying to perform IsUserAuthenticated operation", e);
+                throw e;
+            }
+        }
+
+        public void RevokeAuthentication()
+        {
+            try
+            {
+                sessionManager.RevokeAuthentication(GetCurrentUser());
+            }
+            catch (Exception e)
+            {
+                logger.Log(LogSeverity.Error, "Error trying to perform RevokeAuthentication operation", e);
                 throw e;
             }
         }
