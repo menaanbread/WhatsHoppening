@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using WhatsHoppening.Domain;
+using WhatsHoppening.Domain.Interfaces;
 
 namespace WhatsHoppening.Infrastructure
 {
@@ -23,15 +24,20 @@ namespace WhatsHoppening.Infrastructure
 
             if (!core.IsUserAuthenticated(CurrentUser))
             {
+                ViewBag.LoggedIn = false;
                 filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new
                 {
                     controller = "Login",
                     action = "Login"
                 }));
             }
+
+            ViewBag.LoggedIn = true;
         }
 
         public HopCore Core { get { return core; } internal set { core = value; } }
+
+        public ILogger Log { get { return core.Logger; } }
 
         public User CurrentUser 
         {

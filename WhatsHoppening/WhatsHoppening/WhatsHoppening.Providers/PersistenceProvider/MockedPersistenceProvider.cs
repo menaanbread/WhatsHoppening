@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using WhatsHoppening.Domain.Interfaces;
 using WhatsHoppening.Domain;
 using WhatsHoppening.Providers.UserManager;
+using System.Device.Location;
 
 namespace WhatsHoppening.Providers.PersistenceProvider
 {
@@ -50,11 +51,11 @@ namespace WhatsHoppening.Providers.PersistenceProvider
             beers.Add(new Beer() { Id = 12, Name = "Lees Bitter", Abv = 4.0, Style = styles[0] });
 
             // --------- Bars ---------
-            bars.Add(new Bar("www.grad.com", "GradBar", "Lancaster", BarStyle.Pub, Country.UnitedKingdom) { Id = 1 });
-            bars.Add(new Bar("www.brewdog.com", "Brewdog Manchester", "Manchester", BarStyle.Bar, Country.UnitedKingdom) { Id = 2 });
+            bars.Add(new Bar("www.grad.com", "GradBar", new GeoCoordinate(54.004641, -2.787740), BarStyle.Pub, Country.UnitedKingdom) { Id = 1 });
+            bars.Add(new Bar("www.brewdog.com", "Brewdog Manchester", new GeoCoordinate(53.478044, -2.247245), BarStyle.Bar, Country.UnitedKingdom) { Id = 2 });
             bars.Add(new HomeVenue(BarStyle.Home) { Id = 3 });
             bars.Add(new HomeVenue(BarStyle.MatesHouse) { Id = 4 });
-            bars.Add(new Festival() { Location = "Lancaster", Name = "Lancaster beer festival", StartDate = DateTime.Now.AddDays(- 10.0), EndDate = DateTime.Now, Website = "www.lancasterbeerfest.com", Id = 5 });
+            bars.Add(new Festival() { Location = new GeoCoordinate(54.047185, -2.797833), Name = "Lancaster beer festival", StartDate = DateTime.Now.AddDays(- 10.0), EndDate = DateTime.Now, Website = "www.lancasterbeerfest.com", Id = 5 });
 
             // --------- Breweries ---------
             breweries.Add(new Brewery() { Id = 1, Name = "Acorn", Country = Country.UnitedKingdom, Description = string.Empty, Location = "Barnsley", BeersBrewed = new List<Beer>() { beers[0] } });

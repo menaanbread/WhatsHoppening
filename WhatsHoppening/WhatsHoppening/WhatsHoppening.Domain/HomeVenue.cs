@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Device.Location;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,9 +27,9 @@ namespace WhatsHoppening.Domain
             set { throw new ApplicationException("Cannot change name of home."); } 
         }
         
-        public string Location 
+        public GeoCoordinate Location 
         { 
-            get { return "Where the heart is"; }
+            get { return GeoCoordinate.Unknown; }
             set { throw new ApplicationException("Cannot change home location."); } 
         }
 

@@ -7,6 +7,7 @@ using WhatsHoppening.Domain.Interfaces;
 using WhatsHoppening.Domain;
 using WhatsHoppening.Providers.UserManager;
 using WhatsHoppening.Extensions;
+using System.Web;
 
 namespace WhatsHoppening.Providers.SessionManager
 {
@@ -15,6 +16,8 @@ namespace WhatsHoppening.Providers.SessionManager
         private static Dictionary<string, string> users = null;
         private static List<User> authorisedUsers = new List<User>();
         private static IUserManager userManager;
+
+        private const string USER_COOKIE = "user_id";
 
         static MockedSessionManager()
         {
@@ -30,14 +33,14 @@ namespace WhatsHoppening.Providers.SessionManager
         {
             if (users[authenticationRequest.Username].Equals(authenticationRequest.Password, StringComparison.InvariantCultureIgnoreCase))
             {
-                authorisedUsers.Add(userManager.GetUser(authenticationRequest.Username));
+                CreateAuthenticatedSession(userManager.GetUser(authenticationRequest.Username));
             }
             else
             {
                 throw new ApplicationException("User {0} not authorised / does not exist.".FormatWith(authenticationRequest.Username));
             }
         }
-
+        
         public void RevokeAuthentication(User user)
         {
             authorisedUsers.Remove(user);
@@ -46,6 +49,19 @@ namespace WhatsHoppening.Providers.SessionManager
         public bool HasAuthentication(User user)
         {
             return authorisedUsers.Exists(u => u.Id == user.Id);
+        }
+
+        /// <summary>
+        /// Directly creates a session for a user without checking authorisation.
+        /// Don't use outside this class unless there is a reason (e.g. just openend an account).
+        /// </summary>
+        public void CreateAuthenticatedSession(User user)
+        {
+            var cookies = HttpContext.Current.Response.Cookies;
+
+            cookies.Add(new HttpCookie(USER_COOKIE, user.Id.ToString()));
+
+            authorisedUsers.Add(user);
         }
     }
 }

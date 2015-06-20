@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Device.Location;
 
 namespace WhatsHoppening.Domain
 {
@@ -20,7 +21,7 @@ namespace WhatsHoppening.Domain
             this.barStyle = barStyle;
         }
 
-        public Bar(string website, string name, string location, BarStyle barStyle, Country country)
+        public Bar(string website, string name, GeoCoordinate location, BarStyle barStyle, Country country)
         {
             Website = website;
             Name = name;
@@ -31,7 +32,7 @@ namespace WhatsHoppening.Domain
 
         public string Website { get; set; }
         public string Name { get; set; }
-        public string Location { get; set; }
+        public GeoCoordinate Location { get; set; }
         public BarStyle BarStyle { get { return barStyle; } }
         public Country Country { get; set; }
         public int Id { get; set; }

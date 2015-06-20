@@ -47,6 +47,10 @@
       <Project>{dc098ec3-1fc0-401b-a6f3-baf6ea8e03d1}</Project>
       <Name>WhatsHoppening.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WhatsHoppening.Extensions\WhatsHoppening.Extensions.csproj">
+      <Project>{e89cbaa5-f3ed-4743-b5e1-d6049c1adaf7}</Project>
+      <Name>WhatsHoppening.Extensions</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

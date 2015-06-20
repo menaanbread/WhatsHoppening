@@ -12,5 +12,7 @@ namespace WhatsHoppening.Domain.Interfaces
         User GetUser(int id);
         User GetUser(string username);
         void SaveUser(User user);
+        User OpenAccount(Registration registration);
+        bool UsernameExists(string username);
     }
 }

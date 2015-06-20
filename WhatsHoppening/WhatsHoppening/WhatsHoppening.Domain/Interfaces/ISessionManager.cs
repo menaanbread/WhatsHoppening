@@ -11,5 +11,6 @@ namespace WhatsHoppening.Domain.Interfaces
         void AuthenticateUser(AuthenticationRequest authenticationRequest);
         void RevokeAuthentication(User user);
         bool HasAuthentication(User user);
+        void CreateAuthenticatedSession(User user);
     }
 }

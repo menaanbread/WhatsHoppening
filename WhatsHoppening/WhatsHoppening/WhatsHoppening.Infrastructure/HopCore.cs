@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WhatsHoppening.Domain;
 using WhatsHoppening.Domain.Interfaces;
+using WhatsHoppening.Extensions;
 
 namespace WhatsHoppening.Infrastructure
 {
@@ -107,6 +108,35 @@ namespace WhatsHoppening.Infrastructure
                 logger.Log(LogSeverity.Error, "Error trying to perform RevokeAuthentication operation", e);
                 throw e;
             }
+        }
+
+        public int OpenAccount(string username, string password, string location, Country country)
+        {
+            int newId = -1;
+
+            try
+            {
+                var registration = new Registration()
+                {
+                    Username = username,
+                    Password = password,
+                    Location = location,
+                    Country = country
+                };
+
+                if (!userManager.UsernameExists(username))
+                {
+                    var newUser = userManager.OpenAccount(registration);
+                    newId = newUser.Id;
+                    sessionManager.CreateAuthenticatedSession(newUser);
+                }
+            }
+            catch(Exception e)
+            {
+                logger.Log(LogSeverity.Warn, "Error attemtping to oppen account with Username {0}".FormatWith(username), e);
+            }
+
+            return newId;
         }
     }
 }

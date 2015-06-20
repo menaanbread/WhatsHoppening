@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using WhatsHoppening.Domain;
 using WhatsHoppening.Domain.Interfaces;
 
@@ -11,6 +12,8 @@ namespace WhatsHoppening.Providers.UserManager
     public class MockedUserManager : IUserManager
     {
         private static List<User> allUsers = null;
+
+        private const string USER_COOKIE = "user_id";
                 
         public MockedUserManager()
         {
@@ -27,7 +30,16 @@ namespace WhatsHoppening.Providers.UserManager
 
         public User GetUser()
         {
-            return allUsers[0];
+            var userid = -1;
+
+            var cookies = HttpContext.Current.Request.Cookies;
+
+            if (cookies.AllKeys.Contains(USER_COOKIE))
+            {
+                int.TryParse(cookies[USER_COOKIE].Value, out userid);
+            }
+
+            return GetUser(userid);
         }
 
         public User GetUser(int id)
@@ -44,6 +56,32 @@ namespace WhatsHoppening.Providers.UserManager
         {
             allUsers.RemoveAll(u => u.Id == user.Id);
             allUsers.Add(user);
+        }
+
+
+        public User OpenAccount(Registration registration)
+        {
+            var newUser = new User()
+            {
+                AccountType = Permission.Standard,
+                Country = registration.Country,
+                Created = DateTime.Now,
+                Location = registration.Location,
+                UserName = registration.Username,
+                Id = allUsers.Max(u => u.Id)
+            };
+
+            allUsers.Add(newUser);
+
+            return newUser;
+        }
+
+
+        public bool UsernameExists(string username)
+        {
+            var usernames = allUsers.Select(u => u.UserName).ToList();
+
+            return usernames.Contains(username, StringComparer.InvariantCultureIgnoreCase);
         }
     }
 }

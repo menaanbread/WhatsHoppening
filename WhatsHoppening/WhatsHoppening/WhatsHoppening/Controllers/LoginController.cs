@@ -9,14 +9,9 @@ using WhatsHoppening.Extensions;
 
 namespace WhatsHoppening.Controllers
 {
-    public class LoginController : Controller
+    public class LoginController : UnauthenticatedController
     {
-        private HopCore core = null;
-
-        public LoginController(HopCore core)
-        {
-            this.core = core;
-        }
+        public LoginController(HopCore core) : base(core) { }
 
         [HttpGet]
         public ActionResult Login()
@@ -29,19 +24,21 @@ namespace WhatsHoppening.Controllers
         {
             try
             {
-                core.AuthenticateUser(loginViewModel.Username, loginViewModel.Password);
+                Core.AuthenticateUser(loginViewModel.Username, loginViewModel.Password);
             }
             catch (ApplicationException e)
             {
-                core.Logger.Log(Domain.LogSeverity.Warn, "User {0} entered invalid password.".FormatWith(loginViewModel.Username));
+                Log.Log(Domain.LogSeverity.Warn, "User {0} entered invalid password.".FormatWith(loginViewModel.Username));
                 return RedirectToAction("Login");
             }
             catch (Exception e)
             {
-                core.Logger.Log(Domain.LogSeverity.Warn, "User attempted to log in with name that does not exist : {0}".FormatWith(loginViewModel.Username));
+                Log.Log(Domain.LogSeverity.Warn, "User attempted to log in with name that does not exist : {0}".FormatWith(loginViewModel.Username));
                 return RedirectToAction("Login");
             }
-            
+
+            ViewBag.LoggedIn = true;
+
             return RedirectToAction("Index", "Home");
         }
 
@@ -50,12 +47,15 @@ namespace WhatsHoppening.Controllers
         {
             try
             {
-                core.RevokeAuthentication();
+                Core.RevokeAuthentication();
+
+                ViewBag.LoggedIn = false;
+
                 return RedirectToAction("Login", "Login");
             }
             catch (Exception e)
             {
-                core.Logger.Log(Domain.LogSeverity.Error, "Error occured in Logout", e);
+                Log.Log(Domain.LogSeverity.Error, "Error occured in Logout", e);
                 throw e;
             }
         }
