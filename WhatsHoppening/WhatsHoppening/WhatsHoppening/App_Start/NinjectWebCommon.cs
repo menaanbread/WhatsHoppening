@@ -17,7 +17,7 @@ namespace WhatsHoppening.App_Start
     using WhatsHoppening.Providers.PersistenceProvider;
     using WhatsHoppening.Providers.SessionManager;
     using WhatsHoppening.Providers.UserManager;
-
+    using Providers.ClientStorage;
     public static class NinjectWebCommon 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
@@ -72,8 +72,9 @@ namespace WhatsHoppening.App_Start
             kernel.Bind<ILogger>().To<ConsoleLogger>().InRequestScope();
             kernel.Bind<IPermissionsManager>().To<MockedPermissionsManager>().InRequestScope();
             kernel.Bind<IPersistenceProvider>().To<MockedPersistenceProvider>().InRequestScope();
-            kernel.Bind<ISessionManager>().To<MockedSessionManager>().InRequestScope();
+            kernel.Bind<ISessionManager>().To<CookieAndDbSessionManager>().InSingletonScope();
             kernel.Bind<IUserManager>().To<MockedUserManager>().InRequestScope();
+            kernel.Bind<IClientStorageProvider>().To<CookieClientStorageProvider>().InSingletonScope();
         }        
     }
 }

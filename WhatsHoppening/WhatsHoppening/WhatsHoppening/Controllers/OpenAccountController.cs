@@ -12,7 +12,7 @@ namespace WhatsHoppening.Controllers
 {
     public class OpenAccountController : UnauthenticatedController
     {
-        public OpenAccountController(HopCore core) : base(core) { }
+        public OpenAccountController(HopService core) : base(core) { }
 
         [HttpGet]
         public ActionResult JoinNow()
@@ -30,7 +30,7 @@ namespace WhatsHoppening.Controllers
         {
             if (ModelState.IsValid)
             {
-                var newUserId = Core.OpenAccount(accountDetails.Username, accountDetails.Password, accountDetails.Location, accountDetails.Country);
+                var newUserId = HopService.OpenAccount(accountDetails.Username, accountDetails.Password, accountDetails.Location, accountDetails.Country);
 
                 if (newUserId > 0)
                 {

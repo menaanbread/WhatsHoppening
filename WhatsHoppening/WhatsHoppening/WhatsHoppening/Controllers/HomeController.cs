@@ -7,13 +7,13 @@ using WhatsHoppening.Infrastructure;
 
 namespace WhatsHoppening.Controllers
 {
-    public class HomeController : AuthenticationController
+    public class HomeController : AuthenticatedController
     {
-        public HomeController(HopCore core) : base(core) { }
+        public HomeController(HopService core) : base(core) { }
 
         public ActionResult Index()
         {
-            return View(Core.ListAllPosts());
+            return View(HopService.ListAllPosts());
         }
     }
 }

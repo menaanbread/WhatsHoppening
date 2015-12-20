@@ -11,7 +11,7 @@ namespace WhatsHoppening.Controllers
 {
     public class LoginController : UnauthenticatedController
     {
-        public LoginController(HopCore core) : base(core) { }
+        public LoginController(HopService core) : base(core) { }
 
         [HttpGet]
         public ActionResult Login()
@@ -24,7 +24,7 @@ namespace WhatsHoppening.Controllers
         {
             try
             {
-                Core.AuthenticateUser(loginViewModel.Username, loginViewModel.Password);
+                HopService.AuthenticateUser(loginViewModel.Username, loginViewModel.Password);
             }
             catch (ApplicationException e)
             {
@@ -47,7 +47,7 @@ namespace WhatsHoppening.Controllers
         {
             try
             {
-                Core.RevokeAuthentication();
+                HopService.RevokeAuthentication();
 
                 ViewBag.LoggedIn = false;
 

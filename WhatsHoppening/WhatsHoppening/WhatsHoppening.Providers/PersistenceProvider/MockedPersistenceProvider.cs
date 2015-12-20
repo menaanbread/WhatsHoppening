@@ -24,7 +24,7 @@ namespace WhatsHoppening.Providers.PersistenceProvider
             breweries = new List<Brewery>();
             posts = new List<Post>();
 
-            var userManager = new MockedUserManager();
+            IUserManager userManager = new MockedUserManager();
 
             var styles = new List<BeerStyle>();
             styles.Add(new BeerStyle() { Id = Guid.NewGuid(), Name = "Bitter", Description = string.Empty });

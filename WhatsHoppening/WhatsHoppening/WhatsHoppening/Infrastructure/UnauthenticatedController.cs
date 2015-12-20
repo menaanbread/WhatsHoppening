@@ -1,23 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using WhatsHoppening.Domain.Interfaces;
 
 namespace WhatsHoppening.Infrastructure
 {
     public class UnauthenticatedController : Controller
     {
-        private HopCore core = null;
+        private HopService _hopService = null;
 
-        public UnauthenticatedController(HopCore core)
+        public UnauthenticatedController(HopService hopService)
         {
-            this.core = core;
+            _hopService = hopService;
+
+            _hopService.CreateSession();
         }
 
-        public HopCore Core { get { return core; } internal set { core = value; } }
+        public HopService HopService
+        {
+            get
+            {
+                return _hopService;
+            }
+            internal set
+            {
+                _hopService = value;
+            }
+        }
 
-        public ILogger Log { get { return core.Logger; } }
+        public ILogger Log { get { return _hopService.Logger; } }
     }
 }

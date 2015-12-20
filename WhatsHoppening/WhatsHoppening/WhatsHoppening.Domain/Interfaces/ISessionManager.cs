@@ -1,16 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using WhatsHoppening.Domain.Session;
+using WhatsHoppening.Domain.Session.SessionInformation;
 
 namespace WhatsHoppening.Domain.Interfaces
 {
     public interface ISessionManager
     {
-        void AuthenticateUser(AuthenticationRequest authenticationRequest);
-        void RevokeAuthentication(User user);
-        bool HasAuthentication(User user);
-        void CreateAuthenticatedSession(User user);
+        string SessionId { get; }
+        bool IsAuthenticatedSession { get; }
+
+        SessionCreateResponse CreateSession();
+        SessionAuthenticationResponse AuthenticateSession(SessionAuthenticationRequest sessionAuthenticationRequest);
+        void RevokeSessionAuthentication(RevokeSessionAuthenticationRequest revokeSessionAuthenticationRequest);
+        SessionInformationResponse RetrieveSessionInformation(SessionInformationRequest sessionInformationRequest);
     }
 }

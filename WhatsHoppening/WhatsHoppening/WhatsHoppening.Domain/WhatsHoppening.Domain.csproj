@@ -46,9 +46,14 @@
     <Compile Include="Beer.cs" />
     <Compile Include="BeerStyle.cs" />
     <Compile Include="Brewery.cs" />
+    <Compile Include="ClientStorage\ClearClientStorageRequest.cs" />
+    <Compile Include="ClientStorage\ReadClientStorageRequest.cs" />
+    <Compile Include="ClientStorage\ReadClientStorageResposne.cs" />
+    <Compile Include="ClientStorage\WriteClientStorageRequest.cs" />
     <Compile Include="Country.cs" />
     <Compile Include="Festival.cs" />
     <Compile Include="HomeVenue.cs" />
+    <Compile Include="Interfaces\IClientStorageProvider.cs" />
     <Compile Include="Interfaces\ILocationManager.cs" />
     <Compile Include="Interfaces\ILogger.cs" />
     <Compile Include="Interfaces\IPermissionsManager.cs" />
@@ -62,7 +67,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registration.cs" />
     <Compile Include="SearchPostQuery.cs" />
+    <Compile Include="Session\RevokeSessionAuthenticationRequest.cs" />
+    <Compile Include="Session\SessionAuthenticationRequest.cs" />
+    <Compile Include="Session\SessionAuthenticationResponse.cs" />
+    <Compile Include="Session\SessionCreateResponse.cs" />
+    <Compile Include="Session\SessionInformation\SessionInformationRequest.cs" />
+    <Compile Include="Session\SessionInformation\SessionInformationResponse.cs" />
+    <Compile Include="Session\SessionInformation\SessionInformationType.cs" />
     <Compile Include="User.cs" />
+    <Compile Include="UserManager\Authentication\UserAuthenticationRequest.cs" />
+    <Compile Include="UserManager\Authentication\UserAuthenticationResponse.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web;
 using WhatsHoppening.Domain;
+using WhatsHoppening.Extensions;
 using WhatsHoppening.Domain.Interfaces;
+using WhatsHoppening.Domain.UserManager.Authentication;
 
 namespace WhatsHoppening.Providers.UserManager
 {
@@ -13,10 +13,14 @@ namespace WhatsHoppening.Providers.UserManager
     {
         private static List<User> allUsers = null;
 
+        private IUserManager _this;
+
         private const string USER_COOKIE = "user_id";
                 
         public MockedUserManager()
         {
+            _this = this;
+
             allUsers = new List<User>();
 
             allUsers.Add(new User() { AccountType = Permission.Admin, Country = Country.UnitedKingdom, Created = DateTime.Now, Id = 1, Location = "Warrington", UserName = "Tom" });
@@ -28,7 +32,7 @@ namespace WhatsHoppening.Providers.UserManager
             allUsers.Add(new User() { AccountType = Permission.Standard, Country = Country.Denmark, Created = DateTime.Now, Id = 7, Location = "Allborg", UserName = "rodegrodmegfloge" });
         }
 
-        public User GetUser()
+        User IUserManager.GetUser()
         {
             var userid = -1;
 
@@ -39,27 +43,27 @@ namespace WhatsHoppening.Providers.UserManager
                 int.TryParse(cookies[USER_COOKIE].Value, out userid);
             }
 
-            return GetUser(userid);
+            return _this.GetUser(userid);
         }
 
-        public User GetUser(int id)
+        User IUserManager.GetUser(int id)
         {
             return allUsers.Find(u => u.Id == id);
         }
 
-        public User GetUser(string username)
+        User IUserManager.GetUser(string username)
         {
             return allUsers.Find(u => u.UserName.Equals(username, StringComparison.InvariantCultureIgnoreCase));
         }
 
-        public void SaveUser(User user)
+        void IUserManager.SaveUser(User user)
         {
             allUsers.RemoveAll(u => u.Id == user.Id);
             allUsers.Add(user);
         }
 
 
-        public User OpenAccount(Registration registration)
+        User IUserManager.OpenAccount(Registration registration)
         {
             var newUser = new User()
             {
@@ -77,11 +81,33 @@ namespace WhatsHoppening.Providers.UserManager
         }
 
 
-        public bool UsernameExists(string username)
+        bool IUserManager.UsernameExists(string username)
         {
             var usernames = allUsers.Select(u => u.UserName).ToList();
 
             return usernames.Contains(username, StringComparer.InvariantCultureIgnoreCase);
+        }
+
+        UserAuthenticationResponse IUserManager.Authenticate(UserAuthenticationRequest userAuthenticationRequest)
+        {
+            UserAuthenticationResponse userAuthenticationResponse = null;
+
+            try
+            {
+                userAuthenticationResponse = new UserAuthenticationResponse();
+                userAuthenticationResponse.Authenticated = false;
+
+                if (_this.UsernameExists(userAuthenticationRequest.Username))
+                {
+                    userAuthenticationResponse.Authenticated = userAuthenticationRequest.Password != "FAIL";
+                }                
+            }
+            catch (Exception e)
+            {
+                throw new ApplicationException("An exception occurred attempting to authenticate user {0}.".FormatWith(userAuthenticationRequest.Username), e);
+            }
+
+            return userAuthenticationResponse;
         }
     }
 }

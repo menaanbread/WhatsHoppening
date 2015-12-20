@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using WhatsHoppening.Domain.UserManager.Authentication;
 
 namespace WhatsHoppening.Domain.Interfaces
 {
@@ -14,5 +10,6 @@ namespace WhatsHoppening.Domain.Interfaces
         void SaveUser(User user);
         User OpenAccount(Registration registration);
         bool UsernameExists(string username);
+        UserAuthenticationResponse Authenticate(UserAuthenticationRequest userAuthenticationRequest);
     }
 }
