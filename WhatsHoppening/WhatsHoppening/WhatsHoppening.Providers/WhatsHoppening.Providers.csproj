@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Device" />
     <Reference Include="System.Web" />
@@ -42,12 +43,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClientStorage\CookieClientStorageProvider.cs" />
+    <Compile Include="ConfigurationProvider\ConfigFileConfigurationProvider.cs" />
     <Compile Include="LocationManager\MockedLocationManager.cs" />
     <Compile Include="Logger\ConsoleLogger.cs" />
     <Compile Include="PermissionsManager\MockedPermissionsManager.cs" />
     <Compile Include="PersistenceProvider\MockedPersistenceProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SessionManager\CookieAndDbSessionManager.cs" />
+    <Compile Include="SessionManager\DataAccess\MockedSessionDataAccessProvider.cs" />
     <Compile Include="UserManager\MockedUserManager.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using WhatsHoppening.Domain;
 using WhatsHoppening.Domain.Interfaces;
 using WhatsHoppening.Domain.Session;
+using WhatsHoppening.Domain.Session.SessionInformation;
 using WhatsHoppening.Extensions;
 
 namespace WhatsHoppening.Infrastructure
@@ -69,7 +70,13 @@ namespace WhatsHoppening.Infrastructure
 
             try
             {
-                user = _userManager.GetUser();
+                var userId = int.Parse(_sessionManager.RetrieveSessionInformation(new SessionInformationRequest()
+                {
+                    SessionId = _sessionManager.SessionId,
+                    RequestedSessionInformation = new List<SessionInformationType>() { SessionInformationType.UserId }
+                }).RequestedSessionInformation.First().Value);
+
+                user = _userManager.GetUser(userId);
             }
             catch (Exception e)
             {

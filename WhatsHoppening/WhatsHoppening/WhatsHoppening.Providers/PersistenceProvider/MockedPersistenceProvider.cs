@@ -17,15 +17,13 @@ namespace WhatsHoppening.Providers.PersistenceProvider
         private static List<Brewery> breweries = null;
         private static List<Post> posts = null;
 
-        public MockedPersistenceProvider()
+        public MockedPersistenceProvider(IUserManager userManager)
         {
             beers = new List<Beer>();
             bars = new List<IVenue>();
             breweries = new List<Brewery>();
             posts = new List<Post>();
-
-            IUserManager userManager = new MockedUserManager();
-
+            
             var styles = new List<BeerStyle>();
             styles.Add(new BeerStyle() { Id = Guid.NewGuid(), Name = "Bitter", Description = string.Empty });
             styles.Add(new BeerStyle() { Id = Guid.NewGuid(), Name = "IPA", Description = string.Empty });
@@ -86,7 +84,6 @@ namespace WhatsHoppening.Providers.PersistenceProvider
             posts.Add(new Post() { Id = 12, Beer = beers[0], Bar = bars[1], TimeStamp = DateTime.Now, User = userManager.GetUser(5), Rating = 5.0, Content = "THE BEST EVER." });
             posts.Add(new Post() { Id = 13, Beer = beers[10], Bar = bars[2], TimeStamp = DateTime.Now, User = userManager.GetUser(6), Rating = 3.8, Content = "Could be better, but not bad." });
             posts.Add(new Post() { Id = 14, Beer = beers[11], Bar = bars[3], TimeStamp = DateTime.Now, User = userManager.GetUser(7), Rating = 2.2, Content = "Just a bad beer." });
-
         }
 
 
