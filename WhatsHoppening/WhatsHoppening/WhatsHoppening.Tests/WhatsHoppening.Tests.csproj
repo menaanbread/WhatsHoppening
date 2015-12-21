@@ -33,7 +33,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -48,11 +50,33 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="Extensions\ExtensionsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WhatsHoppening.Domain\WhatsHoppening.Domain.csproj">
+      <Project>{dc098ec3-1fc0-401b-a6f3-baf6ea8e03d1}</Project>
+      <Name>WhatsHoppening.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WhatsHoppening.Extensions\WhatsHoppening.Extensions.csproj">
+      <Project>{e89cbaa5-f3ed-4743-b5e1-d6049c1adaf7}</Project>
+      <Name>WhatsHoppening.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WhatsHoppening.Infrastructure\WhatsHoppening.Infrastructure.csproj">
+      <Project>{2a666f87-f062-4fdf-b351-95c9cf9e62b3}</Project>
+      <Name>WhatsHoppening.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WhatsHoppening.Providers\WhatsHoppening.Providers.csproj">
+      <Project>{de020095-c06a-425e-8d36-b17ae0c1634b}</Project>
+      <Name>WhatsHoppening.Providers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WhatsHoppening\WhatsHoppening.csproj">
+      <Project>{0b5dbf98-b6e6-435a-93c0-cb7375eadfd4}</Project>
+      <Name>WhatsHoppening</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

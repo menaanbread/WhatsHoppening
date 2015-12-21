@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2013 for Web
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhatsHoppening.Tests", "WhatsHoppening.Tests\WhatsHoppening.Tests.csproj", "{83D1E072-69F1-4B86-B8D6-7CA99ACE129C}"
 EndProject
@@ -14,6 +14,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhatsHoppening.Extensions", "WhatsHoppening.Extensions\WhatsHoppening.Extensions.csproj", "{E89CBAA5-F3ED-4743-B5E1-D6049C1ADAF7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhatsHoppening", "WhatsHoppening\WhatsHoppening.csproj", "{0B5DBF98-B6E6-435A-93C0-CB7375EADFD4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{A6A1B106-3425-4942-AF66-1A90A9B36907}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{D1EA9B70-BF7E-4E1C-812A-986DCC585BDC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{94D87606-5602-405E-B718-BE26F4227BD7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -48,5 +54,13 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{83D1E072-69F1-4B86-B8D6-7CA99ACE129C} = {94D87606-5602-405E-B718-BE26F4227BD7}
+		{DC098EC3-1FC0-401B-A6F3-BAF6EA8E03D1} = {D1EA9B70-BF7E-4E1C-812A-986DCC585BDC}
+		{DE020095-C06A-425E-8D36-B17AE0C1634B} = {D1EA9B70-BF7E-4E1C-812A-986DCC585BDC}
+		{2A666F87-F062-4FDF-B351-95C9CF9E62B3} = {D1EA9B70-BF7E-4E1C-812A-986DCC585BDC}
+		{E89CBAA5-F3ED-4743-B5E1-D6049C1ADAF7} = {D1EA9B70-BF7E-4E1C-812A-986DCC585BDC}
+		{0B5DBF98-B6E6-435A-93C0-CB7375EADFD4} = {A6A1B106-3425-4942-AF66-1A90A9B36907}
 	EndGlobalSection
 EndGlobal
