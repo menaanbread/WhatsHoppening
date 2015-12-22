@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Caching\CachingProvider.cs" />
     <Compile Include="ClientStorage\CookieClientStorageProvider.cs" />
     <Compile Include="ConfigurationProvider\ConfigFileConfigurationProvider.cs" />
     <Compile Include="LocationManager\MockedLocationManager.cs" />

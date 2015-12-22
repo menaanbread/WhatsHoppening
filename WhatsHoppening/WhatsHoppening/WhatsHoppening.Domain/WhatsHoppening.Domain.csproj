@@ -46,6 +46,12 @@
     <Compile Include="Beer.cs" />
     <Compile Include="BeerStyle.cs" />
     <Compile Include="Brewery.cs" />
+    <Compile Include="Caching\CacheClearRequest.cs" />
+    <Compile Include="Caching\CacheReadRequest.cs" />
+    <Compile Include="Caching\CacheReadResponse.cs" />
+    <Compile Include="Caching\CacheScope.cs" />
+    <Compile Include="Caching\CacheWriteRequest.cs" />
+    <Compile Include="Caching\CacheWriteResponse.cs" />
     <Compile Include="ClientStorage\ClearClientStorageRequest.cs" />
     <Compile Include="ClientStorage\ReadClientStorageRequest.cs" />
     <Compile Include="ClientStorage\ReadClientStorageResposne.cs" />
@@ -55,6 +61,7 @@
     <Compile Include="Country.cs" />
     <Compile Include="Festival.cs" />
     <Compile Include="HomeVenue.cs" />
+    <Compile Include="Interfaces\ICachingProvider.cs" />
     <Compile Include="Interfaces\IClientStorageProvider.cs" />
     <Compile Include="Interfaces\IConfigurationProvider.cs" />
     <Compile Include="Interfaces\ILocationManager.cs" />
