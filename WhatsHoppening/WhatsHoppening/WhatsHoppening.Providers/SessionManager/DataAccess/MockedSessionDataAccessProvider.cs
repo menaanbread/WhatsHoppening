@@ -56,7 +56,7 @@ namespace WhatsHoppening.Providers.SessionManager.DataAccess
 
         SessionReadResponse<T> ISessionDataAccessProvider.Read<T>(SessionReadRequest sessionReadRequest)
         {
-            SessionReadResponse<T> sessionReadResponse = null;
+            var sessionReadResponse = new SessionReadResponse<T>();
 
             try
             {
@@ -71,7 +71,8 @@ namespace WhatsHoppening.Providers.SessionManager.DataAccess
                     }
                     else
                     {
-                        sessionReadResponse.Data = (T)sessionInformation.FirstOrDefault(x => x.Key == sessionReadRequest.SessionInformationType).Value;
+                        var unparsedData = sessionInformation.FirstOrDefault(x => x.Key == sessionReadRequest.SessionInformationType).Value;
+                        sessionReadResponse.Data = (T)unparsedData;
                     }                    
                 }
             }
@@ -112,7 +113,14 @@ namespace WhatsHoppening.Providers.SessionManager.DataAccess
                 if (!_session.ContainsKey(sessionStoreRequest.SessionId))
                 {
                     _session.Add(sessionStoreRequest.SessionId, new Dictionary<SessionInformationType, object>());
-                    _session[sessionStoreRequest.SessionId].Add(SessionInformationType.SessionExpiry, 
+                    _session[sessionStoreRequest.SessionId].Add(SessionInformationType.SessionExpiry,
+                        DateTime.Now.AddSeconds(int.Parse(_configurationProvider.Read("SessionExpirySeconds").Value)));
+                }
+
+                if (!_session[sessionStoreRequest.SessionId].ContainsKey(SessionInformationType.SessionExpiry))
+                {
+                    //Odd scenario where session created without expiry
+                    _session[sessionStoreRequest.SessionId].Add(SessionInformationType.SessionExpiry,
                         DateTime.Now.AddSeconds(int.Parse(_configurationProvider.Read("SessionExpirySeconds").Value)));
                 }
 

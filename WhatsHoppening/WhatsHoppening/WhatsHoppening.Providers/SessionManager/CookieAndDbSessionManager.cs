@@ -119,7 +119,7 @@ namespace WhatsHoppening.Providers.SessionManager
 
         SessionInformationResponse ISessionManager.RetrieveSessionInformation(SessionInformationRequest sessionInformationRequest)
         {
-            SessionInformationResponse sessionInformationResponse = null;
+            var sessionInformationResponse = new SessionInformationResponse();
 
             try
             {

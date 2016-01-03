@@ -100,6 +100,7 @@ namespace WhatsHoppening.Providers.UserManager
                 if (_this.UsernameExists(userAuthenticationRequest.Username))
                 {
                     userAuthenticationResponse.Authenticated = userAuthenticationRequest.Password != "FAIL";
+                    userAuthenticationResponse.UserId = _this.GetUser(userAuthenticationRequest.Username).Id;
                 }                
             }
             catch (Exception e)
